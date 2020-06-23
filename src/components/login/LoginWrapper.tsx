@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import LoginModal from './LoginModal';
+import './Login.css';
 
 interface Credentials {
     username?: string;
     password?: string;
-    module_id?: string;
+    model_id?: string;
 }
 
 interface UserCredentials {
@@ -11,38 +13,43 @@ interface UserCredentials {
     isLoggedIn: boolean;
 }
 
-class LoginWrapper extends Component<{}, UserCredentials> {
+class LoginWrapper extends Component<any, UserCredentials> {
     constructor(props: any) {
         super(props);
         this.state = {
             creds: null,
             isLoggedIn: false,
         };
+        this.login = this.login.bind(this);
     }
 
     componentDidMount(): void {
         // Check Local Storage For Login Info
-        const local = window.localStorage.getItem('index-indicator-uc');
-        if ( local !== null && typeof local === 'object' ) {
-            const { username, password, module_id } = local;
+        const local: string | null = window.localStorage.getItem('index-indicator-uc');
+        if ( local !== null) {
+            const { username, password, model_id } = JSON.parse(local);
             this.setState({
-                creds: { username, password, module_id },
+                creds: { username, password, model_id },
                 isLoggedIn: true,
             });
-        } else {
-            console.log(local);
         }
     }
 
-    login(credentials: Credentials): void {
-
+    login(creds: Credentials): any {
+        // Authenticate with Server
+        this.setState({ creds, isLoggedIn: true });
+        this.props.setCredentials(creds);
     }
 
     render(): React.ReactNode {
-        const login = null;
         return (
-            <div>
-                {login === null && <div>login</div>}
+            <div className="Login-parent">
+                {!this.state.isLoggedIn && (
+                    <LoginModal login={this.login}/>
+                )}
+                {this.state.isLoggedIn && (
+                    this.props.children
+                )}
             </div>
         );
     }
