@@ -13,6 +13,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ],
     "lib": [
       "dom",
       "dom.iterable",
