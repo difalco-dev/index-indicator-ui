@@ -8,9 +8,11 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     root: {
-        marginTop: '24vh',
+        marginTop: '16vh',
         width: '24%',
+        minWidth: 280,
         height: '56vh',
+        minHeight: 320,
     },
     title: {
         fontSize: 14,
