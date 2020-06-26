@@ -44,7 +44,7 @@ export default function OutlinedCard(props: any): any {
         setPassword(event.target.value);
     };
 
-    const handleSubmit = (event: any): void => {
+    const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>): void => {
         const model_id = 'test_01';
         login({ username, password, model_id });
     };
@@ -69,15 +69,16 @@ export default function OutlinedCard(props: any): any {
                         onChange={handlePasswordChange}
                         variant="filled"
                         type="password"/>
+                    <div className="Login-button-group">
+                        <Button className={classes.submit} variant="contained" color="primary" onClick={handleSubmit}>
+                            Log In
+                        </Button>
+                        <Button className={classes.submit} variant="contained" color="primary" onClick={handleSubmit}>
+                            Sign Up
+                        </Button>
+                    </div>
                 </form>
-                <div className="Login-button-group">
-                    <Button className={classes.submit} variant="contained" color="primary" onClick={handleSubmit}>
-                        Log In
-                    </Button>
-                    <Button className={classes.submit} variant="contained" color="primary" onClick={handleSubmit}>
-                        Sign Up
-                    </Button>
-                </div>
+
             </CardContent>
         </Card>
     );
