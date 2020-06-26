@@ -18,7 +18,7 @@ const DataProvider = ({children}: Props, { username, password, model_id }: Crede
 
     useEffect((): void => {
         // TO DO: Feed setData into Reducer
-        // setData([...data, ...data]);
+        console.log('useEffect');
     }, [data]);
 
     // TO DO: Replace w Call to Server
