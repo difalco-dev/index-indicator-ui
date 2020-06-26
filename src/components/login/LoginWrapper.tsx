@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import LoginModal from './LoginModal';
 import './Login.css';
 
@@ -27,29 +27,24 @@ class LoginWrapper extends Component<any, UserCredentials> {
         // Check Local Storage For Login Info
         const local: string | null = window.localStorage.getItem('index-indicator-uc');
         if ( local !== null) {
-            const { username, password, model_id } = JSON.parse(local);
+            const { username, model_id } = JSON.parse(local);
             this.setState({
-                creds: { username, password, model_id },
+                creds: { username, model_id },
                 isLoggedIn: true,
             });
         }
     }
 
-    login(creds: Credentials): any {
-        // Authenticate with Server
+    login(creds: Credentials): void {
         this.setState({ creds, isLoggedIn: true });
         this.props.setCredentials(creds);
     }
 
-    render(): React.ReactNode {
+    render(): ReactNode {
         return (
             <div className="Login-parent">
-                {!this.state.isLoggedIn && (
-                    <LoginModal login={this.login}/>
-                )}
-                {this.state.isLoggedIn && (
-                    this.props.children
-                )}
+                {!this.state.isLoggedIn && <LoginModal login={this.login}/>}
+                {this.state.isLoggedIn && this.props.children}
             </div>
         );
     }
