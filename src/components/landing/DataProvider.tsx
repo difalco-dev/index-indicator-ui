@@ -13,15 +13,26 @@ interface Props {
 
 const DataProvider = ({children}: Props, { username, password, model_id }: Credentials): any => {
 
+    const [loading, setLoading] = useState(true);
     const [data, setData] = useState(model_obj);
 
     useEffect((): void => {
+        // TO DO: Feed setData into Reducer
         console.log('useEffect');
-    }, []);
+    }, [data]);
+
+    // TO DO: Replace w Call to Server
+    fetch('https://www.google.com').then((res: Response): object => {
+       setLoading(false);
+       return res.json;
+    }).catch((err: Error): Error => err);
 
     return(
         <TickerContext.Provider value={data}>
-            { children }
+            {loading && (
+                <div>loading...</div>
+            )}
+            {!loading && children }
         </TickerContext.Provider>
     );
 

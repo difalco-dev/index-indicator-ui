@@ -22,7 +22,10 @@ class App extends Component<{}, any> {
   }
 
   setCredentials(creds: Credentials): void {
-    const { username, password, model_id } = creds;
+    const { username, password } = creds;
+    // FETCH MODEL FROM USERNAME
+    const model_id = 'model_1';
+
     this.setState({ username, password, model_id }, (): void => {
       console.log(this.state);
     });

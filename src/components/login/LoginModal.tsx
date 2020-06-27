@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -20,7 +20,6 @@ const useStyles = makeStyles({
     input: {
         '& > *': {
             margin: 16,
-            width: '25ch',
         },
     },
     submit: {
@@ -30,23 +29,31 @@ const useStyles = makeStyles({
     },
 });
 
-export default function OutlinedCard(props: any): any {
-    const classes = useStyles();
-    const { login } = props;
+interface Credentials {
+    username?: string;
+    password?: string;
+    model_id?: string;
+}
 
-    const [username, setUserName] = React.useState('');
-    const handleUserNameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+interface Props {
+    login: (creds: Credentials) => void;
+}
+
+export default function LoginModal({ login }: Props): any {
+    const classes = useStyles();
+
+    const [username, setUserName] = useState('');
+    const handleUserNameChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setUserName(event.target.value);
     };
 
-    const [password, setPassword] = React.useState('');
-    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const [password, setPassword] = useState('');
+    const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setPassword(event.target.value);
     };
 
-    const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>): void => {
-        const model_id = 'test_01';
-        login({ username, password, model_id });
+    const handleSubmit = (event: MouseEvent<HTMLButtonElement>): void => {
+        login({ username, password });
     };
 
     return (
@@ -78,7 +85,6 @@ export default function OutlinedCard(props: any): any {
                         </Button>
                     </div>
                 </form>
-
             </CardContent>
         </Card>
     );
