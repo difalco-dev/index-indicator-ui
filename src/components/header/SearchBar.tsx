@@ -6,17 +6,15 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 const SearchBar = (): ReactElement => {
 
     const flatProps = {
-        options: top100Films.map((option: any): any => option.title),
+        options: tickers.map((option: any): any => option.title),
     };
     const [value, setValue] = React.useState(null);
 
-    console.log(value);
-
     return (
-        <div style={{ width: '25%' }}>
+        <div style={{ width: '20%' }}>
             <Autocomplete
                 {...flatProps}
-                id="flat-demo"
+                id="ticker-search"
                 onChange={(event: any, newValue: any): any => {
                     setValue(newValue);
                 }}
@@ -26,7 +24,7 @@ const SearchBar = (): ReactElement => {
     );
 };
 
-const top100Films = [
+const tickers = [
     { title: 'APPL', year: 1994 },
     { title: 'MCD', year: 1972 },
 ];
