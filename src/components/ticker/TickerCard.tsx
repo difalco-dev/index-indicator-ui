@@ -55,31 +55,40 @@ const TickerCard = ({ticker_id, price, indicators, setExpanded, index, exp}: Tic
     const classes = useStyles();
     const init_root_style = (exp === true) ? classes.rootMax : classes.rootMin;
     const init_card_style = (exp === true) ? classes.cardMax : classes.cardMin;
-    const [expanded, setExpandedLocal] = useState(false);
     const [root, setRootStyle] = useState(init_root_style);
     const [card, setCardStyle] = useState(init_card_style);
 
-    const handleExpansion = (event: MouseEvent<HTMLButtonElement>): void => {
-        if (expanded === false) {
+    const handleExpansionOuter = (event: MouseEvent<HTMLButtonElement>): void => {
+        if (exp === false) {
             setRootStyle(classes.rootMax);
             setCardStyle(classes.cardMax);
             setExpanded(index);
-        } else {
+        }
+    };
+
+    const handleExpansionInner = (event: MouseEvent<HTMLButtonElement>): void => {
+        if (exp === true) {
             setRootStyle(classes.rootMin);
             setCardStyle(classes.cardMin);
             setExpanded(-1);
         }
-        setExpandedLocal(!expanded);
     };
+
     return (
-        <Button className={root} onClick={handleExpansion}>
+        <Button className={root} onClick={handleExpansionOuter}>
             <Card className={card}>
                 <div className="Root">
-                    <div className="Header">
-                        {ticker_id}
-                        {price}
+                    <div className="Top-row">
+                        <div>{ticker_id}</div>
+                        <div>{price}</div>
+                        <div>^</div>
                     </div>
-                    {indicators[0].ind_title}
+                    <div>graph</div>
+                    {exp && (
+                        <div>
+                            <Button onClick={handleExpansionInner}>close</Button>
+                        </div>
+                    )}
                 </div>
             </Card>
         </Button>

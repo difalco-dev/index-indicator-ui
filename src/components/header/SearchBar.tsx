@@ -9,6 +9,8 @@ const SearchBar = (): ReactElement => {
         options: tickers.map((option: any): any => option.title),
     };
     const [value, setValue] = React.useState(null);
+    console.log(value);
+    // TO-DO: pass value up to LandingCard to filter & expand requested card
 
     return (
         <div style={{ width: '20%' }}>

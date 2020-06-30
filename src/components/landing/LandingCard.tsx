@@ -47,11 +47,21 @@ const LandingCard = ({ username }: Credentials): ReactElement => {
         <Card className={classes.root}>
             <Header username={username} setNav={setNav}/>
             <div className="Ticker-container">
-                {(expanded === -1) && model_obj.map((ticker: Ticker, key: number): ReactElement => {
-                    return <TickerCard {...ticker} setExpanded={setExpanded} key={key} index={key} exp={false}/>;
-                })}
+                {(expanded === -1) && model_obj.map((ticker: Ticker, key: number): ReactElement => (
+                    <TickerCard
+                        {...ticker}
+                        setExpanded={setExpanded}
+                        key={key}
+                        index={key}
+                        exp={false}/>
+                ))}
                 {(expanded !== -1) && (
-                    <TickerCard {...ticker_exp} setExpanded={setExpanded} key={expanded} index={expanded} exp={true}/>
+                    <TickerCard
+                        {...ticker_exp}
+                        setExpanded={setExpanded}
+                        key={expanded}
+                        index={expanded}
+                        exp={true}/>
                 )}
             </div>
         </Card>
