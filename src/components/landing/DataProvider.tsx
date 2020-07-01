@@ -25,7 +25,10 @@ const DataProvider = ({children}: Props, { username, password, model_id }: Crede
     fetch('https://www.google.com').then((res: Response): object => {
        setLoading(false);
        return res.json;
-    }).catch((err: Error): Error => err);
+    }).catch((err: Error): void => {
+        console.log(err);
+        setLoading(false);
+    });
 
     return(
         <TickerContext.Provider value={data}>

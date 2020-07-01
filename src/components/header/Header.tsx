@@ -14,7 +14,7 @@ const Header = ({ username, setNav }: UID): ReactElement => {
     return (
         <div className="Header-root">
             <SearchBar />
-            {['My Market', 'News', username].map((title: any, key: number): ReactElement => (
+            {['My Market', username].map((title: any, key: number): ReactElement => (
                 <Button key={key + 1} onClick={(): void => setNav(key + 1)}>
                     <Typography variant="h5">
                         {title !== username && title}
