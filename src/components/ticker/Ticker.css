@@ -1,16 +1,73 @@
-.Root {
+.Root-ticker {
+    min-width: 100%;
     width: 100%;
-    min-height: 30vh;
-    padding: 16;
+    height: 23vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .Top-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    min-width: 100%;
+}
+
+.Min-graph-parent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Root-max {
+    min-width: 100%;
+    min-height: 90vh;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Indicator-parent {
+    display: flex;
+    margin-top: .1%;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 20%;
+    padding-left: 8%;
+    height: 80vh;
+}
+
+.Indicator-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 16;
+    border-radius: 2.4%;
+    background-color: gray;
+}
+
+.Indicator-title-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 16;
+    border-radius: 2.4%;
+}
+
+.Graph-parent {
     min-width: 80%;
-    
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Graph-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }

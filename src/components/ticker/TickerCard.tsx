@@ -2,6 +2,7 @@ import React, { ReactElement, useState, MouseEvent, Dispatch, SetStateAction } f
 import { makeStyles } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import './Ticker.css';
 
 interface Indicator {
@@ -23,31 +24,24 @@ const useStyles = makeStyles({
         display: 'flex',
         flexWrap: 'wrap',
         flexDirection: 'column',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         marginTop: '2vh',
-        minHeight: '33vh',
         minWidth: '30%',
-        margin: '.8%',
     },
     rootMax: {
         display: 'flex',
-        flexWrap: 'wrap',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        marginTop: '2vh',
         minHeight: '96vh',
         minWidth: '96%',
-        margin: '.8%',
     },
     cardMin: {
         display: 'flex',
-        height: '32vh',
-        width: '100%',
+        minWidth: '100%',
     },
     cardMax: {
         display: 'flex',
-        height: '80vh',
-        width: '100%',
+        minWidth: '100%',
     },
 });
 
@@ -77,19 +71,61 @@ const TickerCard = ({ticker_id, price, indicators, setExpanded, index, exp}: Tic
     return (
         <Button className={root} onClick={handleExpansionOuter}>
             <Card className={card}>
-                <div className="Root">
-                    <div className="Top-row">
-                        <div>{ticker_id}</div>
-                        <div>{price}</div>
-                        <div>^</div>
-                    </div>
-                    <div>graph</div>
-                    {exp && (
-                        <div>
-                            <Button onClick={handleExpansionInner}>close</Button>
+                {!exp && (
+                    <div className="Root-ticker">
+                        <div className="Top-row">
+                            <div>{ticker_id}</div>
+                            <div>{price}</div>
+                            <div>^</div>
                         </div>
-                    )}
-                </div>
+                        <div className="Min-graph-parent">G1</div>
+                    </div>
+                )}
+                {exp && (
+                    <div className="Root-max">
+                        <div className="Indicator-parent">
+                            <Card>
+                                <div className="Indicator-title-row">
+                                    <div>{ticker_id}</div>
+                                    <div>{price}</div>
+                                </div>
+                            </Card>
+                            <Typography variant="h6">
+                                Tickers
+                            </Typography>
+                            {indicators.map((indicator: Indicator, key: number): ReactElement => (
+                                <Card key={key}>
+                                    <div className="Indicator-row">
+                                        <div>title_{indicator.ind_title}</div>
+                                        <div>|</div>
+                                        <div>val_{indicator.ind_val}</div>
+                                    </div>
+                                </Card>
+                            ))}
+                            <div>
+                                <Button color="secondary" variant="contained" onClick={handleExpansionInner}>close</Button>
+                            </div>
+                        </div>
+                        <div className="Graph-parent">
+                            <div className="Graph-child">
+                                <div>
+                                    G1
+                                </div>
+                                <div>
+                                    G2
+                                </div>
+                            </div>
+                            <div className="Graph-child">
+                                <div>
+                                    G3
+                                </div>
+                                <div>
+                                    G4
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </Card>
         </Button>
     );

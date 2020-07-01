@@ -1,14 +1,16 @@
 .Root {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
+    width: 100%;
 }
 
 .Ticker-container {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    justify-content: center;
     flex-wrap: wrap;
-    align-items: center;
-
+    align-items: flex-start;
 }
