@@ -43,7 +43,7 @@ const LandingCard = ({ username }: Credentials): ReactElement => {
     const ticker_exp: Ticker = (expanded !== -1) ? model_obj[expanded] : model_obj[0];
     console.log(model_obj);
     console.log(ticker_exp);
-    const ticker_nav = 0;
+
     // TO DO: render 6 tickers per page w/ bottom nav
     // const rendered_tickers = model_obj.splice(ticker_nav * 6, (ticker_nav + 1) * 6);
     return (
