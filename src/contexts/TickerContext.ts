@@ -3,7 +3,7 @@ import { createContext } from 'react';
 // TEST OBJECT --> REPLACE W FETCH
 export const model_obj = [
     {
-        ticker_id: 'EX1',
+        ticker_id: 'APPL',
         price: 1.11,
         indicators: [
             {
@@ -33,7 +33,7 @@ export const model_obj = [
         ],
     },
     {
-        ticker_id: 'EX2',
+        ticker_id: 'MCD',
         price: 2.22,
         indicators: [
             {
@@ -392,7 +392,7 @@ export const model_obj = [
             },
         ],
     },
-    {
+        {
         ticker_id: 'EX6',
         price: 6.22,
         indicators: [

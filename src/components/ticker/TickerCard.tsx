@@ -75,8 +75,8 @@ const TickerCard = ({ticker_id, price, indicators, setExpanded, index, exp}: Tic
                     <div className="Root-ticker">
                         <div className="Top-row">
                             <div>{ticker_id}</div>
-                            <div>{price}</div>
-                            <div>^</div>
+                            <div>${price}</div>
+                            <div>^%</div>
                         </div>
                         <div className="Min-graph-parent">G1</div>
                     </div>
@@ -84,15 +84,14 @@ const TickerCard = ({ticker_id, price, indicators, setExpanded, index, exp}: Tic
                 {exp && (
                     <div className="Root-max">
                         <div className="Indicator-parent">
-                            <Card>
-                                <div className="Indicator-title-row">
-                                    <div>{ticker_id}</div>
-                                    <div>{price}</div>
-                                </div>
-                            </Card>
-                            <Typography variant="h6">
-                                Tickers
-                            </Typography>
+                            <div className="Indicator-title-row">
+                                <Typography variant="h6">
+                                    {ticker_id}
+                                </Typography>
+                                <Typography variant="h6">
+                                    ${price}
+                                </Typography>
+                            </div>
                             {indicators.map((indicator: Indicator, key: number): ReactElement => (
                                 <Card key={key}>
                                     <div className="Indicator-row">
@@ -109,18 +108,18 @@ const TickerCard = ({ticker_id, price, indicators, setExpanded, index, exp}: Tic
                         <div className="Graph-parent">
                             <div className="Graph-child">
                                 <div>
-                                    G1
+                                    Graph1
                                 </div>
                                 <div>
-                                    G2
+                                    Graph2
                                 </div>
                             </div>
                             <div className="Graph-child">
                                 <div>
-                                    G3
+                                    Graph3
                                 </div>
                                 <div>
-                                    G4
+                                    Graph4
                                 </div>
                             </div>
                         </div>
