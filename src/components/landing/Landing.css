@@ -1,16 +1,26 @@
-.Root {
+.Landing-ticker-root {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    width: 100%;
+    flex-wrap: nowrap;
+    min-width: 100%;
 }
 
-.Ticker-container {
+.Landing-tickers-container-min {
     display: flex;
     flex-direction: row;
-    width: 100%;
     justify-content: center;
     flex-wrap: wrap;
     align-items: flex-start;
+}
+
+.Landing-tickers-container-max {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-width: 90%;
+    width: 90%;
 }

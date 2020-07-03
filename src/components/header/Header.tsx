@@ -4,12 +4,13 @@ import './Header.css';
 import { Typography, Button } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-interface UID {
+interface HeaderProps {
+    id: string;
     username?: string;
     setNav: Dispatch<SetStateAction<number>>;
 }
 
-const Header = ({ username, setNav }: UID): ReactElement => {
+const Header = ({ username, setNav, id }: HeaderProps): ReactElement => {
 
     return (
         <div className="Header-root">

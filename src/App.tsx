@@ -4,18 +4,7 @@ import LoginWrapper from './components/login/LoginWrapper';
 import LandingCard from './components/landing/LandingCard';
 import DataProvider from './components/landing/DataProvider';
 
-interface Credentials {
-  username?: string;
-  password?: string;
-  model_id?: string;
-}
-
-interface Props {
-    children: React.ReactNode;
-    credentials?: Credentials;
-}
-
-class App extends Component<{}, any> {
+export default class App extends Component<{}, any> {
   constructor(props: any) {
     super(props);
     this.setCredentials = this.setCredentials.bind(this);
@@ -44,4 +33,8 @@ class App extends Component<{}, any> {
   }
 }
 
-export default App;
+interface Credentials {
+  username?: string;
+  password?: string;
+  model_id?: string;
+}
