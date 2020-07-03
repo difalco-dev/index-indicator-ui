@@ -10,7 +10,6 @@ const useStyles = makeStyles({
     root: {
         width: '24%',
         minWidth: 280,
-        height: '56vh',
         minHeight: 320,
     },
     title: {
@@ -24,7 +23,7 @@ const useStyles = makeStyles({
     submit: {
         height: '6vh',
         width: '56%',
-        margin: 8,
+        margin: 4,
     },
 });
 
@@ -34,11 +33,11 @@ interface Credentials {
     model_id?: string;
 }
 
-interface Props {
+interface LoginModalProps {
     login: (creds: Credentials) => void;
 }
 
-export default function LoginModal({ login }: Props): any {
+export default function LoginModal({ login }: LoginModalProps): any {
     const classes = useStyles();
 
     const [username, setUserName] = useState('');

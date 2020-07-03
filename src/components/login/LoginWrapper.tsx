@@ -2,18 +2,7 @@ import React, { Component, ReactNode } from 'react';
 import LoginModal from './LoginModal';
 import './Login.css';
 
-interface Credentials {
-    username?: string;
-    password?: string;
-    model_id?: string;
-}
-
-interface UserCredentials {
-    creds?: null | Credentials;
-    isLoggedIn: boolean;
-}
-
-class LoginWrapper extends Component<any, UserCredentials> {
+class LoginWrapper extends Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -41,13 +30,28 @@ class LoginWrapper extends Component<any, UserCredentials> {
     }
 
     render(): ReactNode {
+        const wrapperStyle = (this.state.isLoggedIn === true) ? 'Login-wrapper-parent-sign-in' : 'Login-wrapper-parent-in';
         return (
-            <div className="Login-parent">
+            <div className={wrapperStyle}>
                 {!this.state.isLoggedIn && <LoginModal login={this.login}/>}
                 {this.state.isLoggedIn && this.props.children}
             </div>
         );
     }
+}
+interface AppCallback {
+    setCredentials: (creds: Credentials) => void;
+}
+
+interface Credentials {
+    username?: string;
+    password?: string;
+    model_id?: string;
+}
+
+interface UserCredentials {
+    creds?: null | Credentials;
+    isLoggedIn: boolean;
 }
 
 export default LoginWrapper;

@@ -1,8 +1,19 @@
-.Login-parent {
+.Login-wrapper-parent-sign-in {
     display: flex;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
     width: 100%;
+    min-width: 100%;
+}
+
+.Login-wrapper-parent-in {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 100%;
 }
 
 .Login-button-group {
